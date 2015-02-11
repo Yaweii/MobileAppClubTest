@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AFNetworking.h"
 
 @interface ViewController ()
 
@@ -16,7 +17,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    // AFNetworking test
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:@"http://headers.jsontest.com/" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *dic=responseObject;
+        for (NSString *s in [dic allKeys]){
+            NSLog(@"KEY:%@| VALUE: %@", s,[dic objectForKey:s]);
+        }
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning {
