@@ -21,10 +21,11 @@
     // AFNetworking test
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"http://headers.jsontest.com/" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:@"http://date.jsontest.com/"
+      parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *dic=responseObject;
         for (NSString *s in [dic allKeys]){
-            NSLog(@"KEY:%@| VALUE: %@", s,[dic objectForKey:s]);
+            NSLog(@"Key:%@| Value: %@", s,[dic objectForKey:s]);
         }
         
         
